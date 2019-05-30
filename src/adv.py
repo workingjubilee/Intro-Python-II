@@ -53,10 +53,38 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print("\033[?1049h\033[H")
+print("Welcome!")
 
 while True:
-    response = input('>')
-    if response == 'stop':
+    res = input('>')
+    if res == 'q':
+        print("\033[?1049l")
         break
     else:
-        pass
+        print(f'{response}')
+
+
+# Add a REPL parser to `adv.py` that accepts directional commands
+# to move the player
+# After each move, the REPL should print the name and description of
+# the player's current room
+# Valid commands are `n`, `s`, `e` and `w` which move the player
+# North, South, East or West
+# The parser should print an error if
+# the player tries to move where there is no room.
+
+  # * Until now, the parser could just understand one sentence form:
+
+  #    `verb`
+
+  #   such as "n" or "q".
+
+  # * But now we want to add the form:
+
+  #   `verb` `object`
+
+  #   such as "take coins" or "drop sword".
+
+# * Add the `i` and `inventory` commands that both show a list of items currently
+#   carried by the player.
