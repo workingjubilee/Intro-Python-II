@@ -10,7 +10,12 @@ class Room:
         self.contains = contains
 
     def view(self):
-        return f'{self.title}\n{self.description}\n{self.directions}'
+        title = self.title
+        desc = self.description
+        dirs = f'Directions: {[k for k in list(self.directions)]!s}'
+        empty = 'nothing'
+        items = f'Contains: {self.contains if self.contains else empty}'
+        return f'[{title}]\n    {desc}\n    {items}\n    {dirs}'
 
         # The Room class should be extended with a list
         # that holds the Items that are currently in that room.

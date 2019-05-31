@@ -56,8 +56,7 @@ earlier adventurers. The only exit is to the south.""",
 def go_(dir):
     try:
         player.location = room[player.location].directions[dir]
-        print(room[player.location].description)
-
+        print(room[player.location].view())
     except:
         print(f'Failed to go {dir}!')
 
@@ -65,7 +64,6 @@ def go_(dir):
 def monokey(c):
     if c == 'i':
         player.inventory()
-        # print('Nope, too poor for that.')
     else:
         go_(c)
 
