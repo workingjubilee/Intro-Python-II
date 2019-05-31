@@ -8,6 +8,9 @@ class Room:
         self.description = description
         self.directions = directions
 
+    def view(self):
+        return f'{self.title}\n{self.description}\n{self.directions}'
+
         # The Room class should be extended with a list
         # that holds the Items that are currently in that room.
 

@@ -4,46 +4,39 @@ from player import Player
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons",
-                     {'n': 'foyer'}),
+    'outside':
+        Room("Outside Cave Entrance",
+             "North of you, the cave mount beckons",
+             {'n': 'foyer'}),
 
-    'foyer':    Room("Foyer",
-                     """Dim light filters in from the south. Dusty
+    'foyer':
+        Room("Foyer",
+             """Dim light filters in from the south. Dusty
 passages run north and east.""",
-                     {'n': 'overlook', 'e': 'narrow', 's': 'outside'}),
+             {'n': 'overlook', 'e': 'narrow', 's': 'outside'}),
 
-    'overlook': Room("Grand Overlook",
-                     """A steep cliff appears before you, falling
+    'overlook':
+        Room("Grand Overlook",
+             """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm.""",
-                     {'s': 'foyer'}),
+             {'s': 'foyer'}),
 
-    'narrow':   Room("Narrow Passage",
-                     """The narrow passage bends here from west
+    'narrow':
+        Room("Narrow Passage",
+             """The narrow passage bends here from west
 to north. The smell of gold permeates the air.""",
-                     {'w': 'foyer', 'n': 'treasure'}),
+             {'w': 'foyer', 'n': 'treasure'}),
 
-    'treasure': Room("Treasure Chamber",
-                     """You've found the long-lost treasure
+    'treasure':
+        Room("Treasure Chamber",
+             """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south.""",
-                     {'s': 'narrow'}),
+             {'s': 'narrow'}),
 }
 
 
-# Link rooms together
-
-# room['outside'].n_to = room['foyer']
-# room['foyer'].s_to = room['outside']
-# room['foyer'].n_to = room['overlook']
-# room['foyer'].e_to = room['narrow']
-# room['overlook'].s_to = room['foyer']
-# room['narrow'].w_to = room['foyer']
-# room['narrow'].n_to = room['treasure']
-# room['treasure'].s_to = room['narrow']
-
-#
 # Main
 #
 
@@ -62,7 +55,7 @@ earlier adventurers. The only exit is to the south.""",
 
 def go_(dir):
     try:
-        player.location = room[player.location].directions[f'{dir}']
+        player.location = room[player.location].directions[dir]
         print(room[player.location].description)
 
     except:
@@ -87,17 +80,17 @@ def command_router(cmd):
 
 
 print("\033[?1049h\033[H")
-print("Welcome!")
+print("Welcome!\n")
 player = Player('Jubilee', 'outside')
-print(room[player.location].description)
+print(room[player.location].view())
 
 while True:
-    res = input('>')
-    if res == 'q':
+    response = input('>')
+    if response == 'q':
         print("\033[?1049l")
         break
     else:
-        command_router(res)
+        command_router(response)
 
 # look into player's location
 # thumb over the exit identities
