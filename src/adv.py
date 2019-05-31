@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -59,20 +60,36 @@ earlier adventurers. The only exit is to the south.""",
 #
 # If the user enters "q", quit the game.
 
+def go_(dir):
+    try:
+        player.location = room[player.location].directions[f'{dir}']
+        print(room[player.location].description)
 
-def monokeys(c):
-    print('monokey')
+    except:
+        print(f'Failed to go {dir}!')
 
 
-def command_router(command):
-    if len(command) == 1:
-        monokeys(command)
+def monokey(c):
+    if c == 'i':
+        # inventory()
+        print('Nope, too poor for that.')
+    else:
+        go_(c)
+
+
+def command_router(cmd):
+    if len(cmd) == 1:
+        monokey(cmd)
+    elif cmd == 'show':
+        print('%s' % room)
     else:
         print('multikey')
 
 
 print("\033[?1049h\033[H")
 print("Welcome!")
+player = Player('Jubilee', 'outside')
+print(room[player.location].description)
 
 while True:
     res = input('>')
