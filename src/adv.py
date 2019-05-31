@@ -64,8 +64,8 @@ def go_(dir):
 
 def monokey(c):
     if c == 'i':
-        # inventory()
-        print('Nope, too poor for that.')
+        player.inventory()
+        # print('Nope, too poor for that.')
     else:
         go_(c)
 

@@ -3,10 +3,11 @@
 
 
 class Room:
-    def __init__(self, title, description, directions):
+    def __init__(self, title='', description='', directions={}, contains=[]):
         self.title = title
         self.description = description
         self.directions = directions
+        self.contains = contains
 
     def view(self):
         return f'{self.title}\n{self.description}\n{self.directions}'
